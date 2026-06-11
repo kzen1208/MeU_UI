@@ -13,6 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { Navbar1 } from "@/components/ui/shadcnblocks-com-navbar1";
 import { CinematicFooter } from "@/components/ui/motion-footer";
+import { useAuth } from "@/lib/auth/auth-context";
 import { CATEGORIES, type ComponentStatus } from "@/lib/components-data";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { translations } from "@/lib/i18n/translations";
@@ -30,13 +31,15 @@ export default function HubCategoryPage({ slug }: HubCategoryPageProps) {
   const { language } = useLanguage();
   const locale = translations[language];
   const t = locale.componentsPage;
+  const { user } = useAuth();
   const rootRef = useRef<HTMLDivElement>(null);
   const [search, setSearch] = useState("");
-  const [status, setStatus] = useState<ComponentStatus | "all">("all");
-  const statusFilters: { label: string; value: ComponentStatus | "all" }[] = [
+  const [status, setStatus] = useState<ComponentStatus | "all" | "favorites">("all");
+  const statusFilters: { label: string; value: ComponentStatus | "all" | "favorites" }[] = [
     { label: t.statusFilters.all, value: "all" },
     { label: t.statusFilters.stable, value: "Stable" },
     { label: t.statusFilters.planned, value: "Planned" },
+    ...(user ? [{ label: t.statusFilters.favorites, value: "favorites" as const }] : []),
   ];
 
   const category = CATEGORIES.find((item) => item.slug === slug);
@@ -48,11 +51,16 @@ export default function HubCategoryPage({ slug }: HubCategoryPageProps) {
 
     return category.components.filter((component) => {
       const matchesSearch = !query || component.name.toLowerCase().includes(query);
-      const matchesStatus = status === "all" || component.status === status;
+      const matchesStatus =
+        status === "all"
+          ? true
+          : status === "favorites"
+            ? (user?.favorites.includes(component.name) ?? false)
+            : component.status === status;
 
       return matchesSearch && matchesStatus;
     });
-  }, [category, search, status]);
+  }, [category, search, status, user]);
 
   useGSAP(
     () => {
@@ -138,12 +146,12 @@ export default function HubCategoryPage({ slug }: HubCategoryPageProps) {
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder={t.searchPlaceholder(category.name)}
-              className="h-11 w-full rounded-lg border border-white/10 bg-black/35 pl-10 pr-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-[#2563eb]/70 focus:bg-black/55"
+              className="h-11 w-full rounded-lg border border-white/10 bg-black/35 pl-10 pr-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-[#4264ff]/70 focus:bg-black/55"
             />
           </label>
 
           <section className="category-hero category-enter relative max-w-full overflow-hidden rounded-xl border border-white/10 bg-black">
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:48px_48px]" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-size-[48px_48px]" />
             <div
               className="absolute inset-0 opacity-75"
               style={{
@@ -158,7 +166,7 @@ export default function HubCategoryPage({ slug }: HubCategoryPageProps) {
                 >
                   <div className="h-2 w-20 rounded-full bg-white/20" />
                   <div className="mt-3 h-2 w-28 rounded-full bg-white/10" />
-                  <div className="mt-7 h-6 rounded-md bg-[#2563eb]/25" />
+                  <div className="mt-7 h-6 rounded-md bg-[#4264ff]/25" />
                 </div>
               ))}
             </div>

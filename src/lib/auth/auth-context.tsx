@@ -7,6 +7,7 @@ export interface AuthUser {
   email: string;
   avatar: string;
   bio: string;
+  favorites: string[];
 }
 
 interface StoredUser extends AuthUser {
@@ -25,6 +26,7 @@ interface AuthContextValue {
   register: (name: string, email: string, password: string) => AuthResult;
   logout: () => void;
   updateProfile: (data: Partial<Pick<AuthUser, "name" | "avatar" | "bio">>) => void;
+  toggleFavorite: (componentName: string) => void;
 }
 
 const USERS_KEY = "meu-ui-hub-users";
@@ -52,6 +54,7 @@ const toPublicUser = (stored: StoredUser): AuthUser => ({
   email: stored.email,
   avatar: stored.avatar,
   bio: stored.bio,
+  favorites: stored.favorites ?? [],
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -99,6 +102,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         password,
         avatar: `https://api.dicebear.com/9.x/notionists/svg?seed=${encodeURIComponent(email)}`,
         bio: "",
+        favorites: [],
       };
       users[key] = stored;
       writeUsers(users);
@@ -135,9 +139,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     []
   );
 
+  const toggleFavorite = React.useCallback((componentName: string) => {
+    setUser((current) => {
+      if (!current) return current;
+
+      const users = readUsers();
+      const key = current.email.toLowerCase();
+      const stored = users[key];
+      if (!stored) return current;
+
+      const favorites = stored.favorites ?? [];
+      const updatedFavorites = favorites.includes(componentName)
+        ? favorites.filter((item) => item !== componentName)
+        : [...favorites, componentName];
+
+      const updated: StoredUser = { ...stored, favorites: updatedFavorites };
+      users[key] = updated;
+      writeUsers(users);
+
+      return toPublicUser(updated);
+    });
+  }, []);
+
   const value = React.useMemo(
-    () => ({ user, ready, login, register, logout, updateProfile }),
-    [user, ready, login, register, logout, updateProfile]
+    () => ({ user, ready, login, register, logout, updateProfile, toggleFavorite }),
+    [user, ready, login, register, logout, updateProfile, toggleFavorite]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

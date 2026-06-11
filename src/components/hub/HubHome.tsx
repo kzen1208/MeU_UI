@@ -12,7 +12,9 @@ import { Skiper19 } from "@/components/ui/svg-follow-scroll";
 import { InternTrainingCourses } from "@/components/ui/intern-training-courses";
 import { Testimonials } from "@/components/ui/testimonials-columns-1";
 import StackingCards from "@/components/ui/stacking-card";
+import { useAuth } from "@/lib/auth/auth-context";
 import CompanyIntroScroll from "./CompanyIntroScroll";
+import HomeWelcomeBack from "./HomeWelcomeBack";
 import LogosSlider from "./LogosSlider";
 import TrainingStack from "./TrainingStack";
 import StoryFlow from "./StoryFlow";
@@ -61,6 +63,7 @@ const STACKING_PROJECT_MEDIA = [
 export default function HubHome() {
   const { language } = useLanguage();
   const t = translations[language];
+  const { user } = useAuth();
 
   const trainingCourses = t.trainingCourses.courses.map((course, index) => ({
     ...course,
@@ -261,6 +264,7 @@ export default function HubHome() {
             title2={t.hero.title2}
             description={t.hero.description}
             className="min-h-[calc(100vh-4rem)]"
+            topSlot={user ? <HomeWelcomeBack /> : null}
           />
         </section>
 

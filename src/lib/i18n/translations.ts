@@ -57,6 +57,10 @@ export const translations = {
       title2: "Tài nguyên UI",
       description:
         "Xây dựng tài nguyên UI nội bộ chất lượng cao thông qua design system, component tái sử dụng và guideline sẵn sàng cho production.",
+      welcomeBack: (name: string) => `Chào mừng trở lại, ${name}!`,
+      welcomeBackDescription: "Tiếp tục hành trình của bạn với MeU UI Hub.",
+      welcomeBackCta: "Xem hồ sơ",
+      welcomeBackSecondaryCta: "Khám phá Components",
     },
     logos: {
       builtAround: "Được xây dựng cùng",
@@ -356,6 +360,7 @@ export const translations = {
         all: "Tất cả",
         stable: "Stable",
         planned: "Planned",
+        favorites: "Yêu thích",
       },
       emptyState: "Không có component phù hợp với bộ lọc hiện tại.",
       clearFilters: "Xoá bộ lọc",
@@ -391,6 +396,8 @@ export const translations = {
         copied: "Đã copy",
         copy: "Copy",
         viewAria: (name: string) => `Xem ${name}`,
+        favoriteAria: (name: string) => `Thêm ${name} vào yêu thích`,
+        unfavoriteAria: (name: string) => `Bỏ ${name} khỏi yêu thích`,
       },
     },
     storyFlow: {
@@ -576,6 +583,10 @@ export const translations = {
       title2: "UI Resources",
       description:
         "Crafting exceptional internal UI resources through design systems, reusable components, and production-ready guidelines.",
+      welcomeBack: (name: string) => `Welcome back, ${name}!`,
+      welcomeBackDescription: "Continue your journey with MeU UI Hub.",
+      welcomeBackCta: "View profile",
+      welcomeBackSecondaryCta: "Explore Components",
     },
     logos: {
       builtAround: "Built around",
@@ -875,6 +886,7 @@ export const translations = {
         all: "All",
         stable: "Stable",
         planned: "Planned",
+        favorites: "Favorites",
       },
       emptyState: "No components match the current filters.",
       clearFilters: "Clear filters",
@@ -910,6 +922,8 @@ export const translations = {
         copied: "Copied",
         copy: "Copy",
         viewAria: (name: string) => `View ${name}`,
+        favoriteAria: (name: string) => `Add ${name} to favorites`,
+        unfavoriteAria: (name: string) => `Remove ${name} from favorites`,
       },
     },
     storyFlow: {

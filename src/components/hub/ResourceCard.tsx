@@ -2,8 +2,9 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Check, Copy, Eye } from "lucide-react";
+import { Check, Copy, Eye, Heart } from "lucide-react";
 import type { Category, ComponentItem } from "@/lib/components-data";
+import { useAuth } from "@/lib/auth/auth-context";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { translations } from "@/lib/i18n/translations";
 import { cn } from "@/lib/utils";
@@ -37,10 +38,12 @@ export default function ResourceCard({
 }: ResourceCardProps) {
   const { language } = useLanguage();
   const t = translations[language].componentsPage.resourceCard;
+  const { user, toggleFavorite } = useAuth();
   const [copied, setCopied] = useState(false);
   const exportName = useMemo(() => componentExportName(component.name), [component.name]);
   const href = `/category/${category.slug}#${componentAnchor(component.name)}`;
   const stable = component.status === "Stable";
+  const isFavorite = user?.favorites.includes(component.name) ?? false;
 
   const handleCopy = async () => {
     const snippet = `import { ${exportName} } from "@meu/ui";\n\n<${exportName} />`;
@@ -58,7 +61,7 @@ export default function ResourceCard({
     <article
       id={componentAnchor(component.name)}
       className={cn(
-        "resource-card group relative flex min-h-full flex-col overflow-hidden rounded-lg border border-white/10 bg-[#0d0d0d] transition duration-200 hover:-translate-y-0.5 hover:border-[#2563eb]/55 hover:bg-[#111111]",
+        "resource-card group relative flex min-h-full flex-col overflow-hidden rounded-lg border border-white/10 bg-[#0d0d0d] transition duration-200 hover:-translate-y-0.5 hover:border-[#4264ff]/55 hover:bg-[#111111]",
         className
       )}
     >
@@ -68,7 +71,7 @@ export default function ResourceCard({
           compact ? "h-[10.5rem]" : "h-56"
         )}
       >
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(37,99,235,0.16),transparent_42%),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:auto,32px_32px,32px_32px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(66,100,255,0.16),transparent_42%),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[auto,32px_32px,32px_32px]" />
         <div className="absolute inset-0 flex items-center justify-center p-5">
           <div
             className={cn(
@@ -91,6 +94,25 @@ export default function ResourceCard({
             {stable ? t.ready : t.planned}
           </span>
         </div>
+
+        <Link
+          href={user ? href : "/login"}
+          onClick={(event) => {
+            if (!user) return;
+            event.preventDefault();
+            toggleFavorite(component.name);
+          }}
+          aria-label={isFavorite ? t.unfavoriteAria(component.name) : t.favoriteAria(component.name)}
+          aria-pressed={isFavorite}
+          className={cn(
+            "absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-md border backdrop-blur-sm transition",
+            isFavorite
+              ? "border-[#ed649e]/45 bg-[#ed649e]/15 text-[#ed649e]"
+              : "border-white/14 bg-black/30 text-white/55 hover:border-[#ed649e]/40 hover:text-[#ed649e]"
+          )}
+        >
+          <Heart className={cn("h-4 w-4", isFavorite && "fill-current")} />
+        </Link>
         <div className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black/80 to-transparent opacity-0 transition group-hover:opacity-100" />
       </div>
 
@@ -119,7 +141,7 @@ export default function ResourceCard({
           <Link
             href={href}
             aria-label={t.viewAria(component.name)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/14 text-white/55 transition hover:border-[#2563eb]/60 hover:bg-[#2563eb]/10 hover:text-white"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/14 text-white/55 transition hover:border-[#4264ff]/60 hover:bg-[#4264ff]/10 hover:text-white"
           >
             <Eye className="h-4 w-4" />
           </Link>
