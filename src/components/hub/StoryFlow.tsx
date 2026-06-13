@@ -30,7 +30,7 @@ export default function StoryFlow() {
             <p className="text-xs font-bold uppercase tracking-[0.2em]">{section.label}</p>
             <hr className={`my-[2vw] border-none border-t ${theme.divider}`} />
             <div>
-              <h2 className="text-[clamp(3rem,11vw,13rem)] font-bold uppercase leading-[0.9] tracking-tight">
+              <h2 className="text-[clamp(2.25rem,8vw,8rem)] font-bold uppercase leading-[1.05] tracking-tight">
                 {section.heading.map((line, lineIndex) => (
                   <span key={lineIndex} className="block">
                     {line}
@@ -41,7 +41,7 @@ export default function StoryFlow() {
             <hr className={`my-[2vw] border-none border-t ${theme.divider}`} />
             <p
               className={`max-w-[50ch] text-[clamp(1rem,2.5vw,2rem)] font-normal leading-relaxed ${
-                section.groups.length === 0 ? "mt-auto" : ""
+                section.groups.length === 0 ? "sm:mt-auto" : ""
               }`}
             >
               {section.description}

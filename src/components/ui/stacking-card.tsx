@@ -61,7 +61,7 @@ export const Card = ({
           top: `calc(-7vh + ${i * 32}px)`,
           zIndex: i + 1,
         }}
-        className="relative -top-[12%] flex h-[520px] w-full max-w-[1260px] origin-top flex-col rounded-[2rem] p-6 text-[#050936] shadow-[0_34px_80px_rgba(0,0,0,0.24)] sm:p-8 lg:p-10"
+        className="relative -top-[12%] flex h-auto min-h-120 w-full max-w-315 origin-top flex-col overflow-hidden rounded-4xl p-6 text-[#050936] shadow-[0_34px_80px_rgba(0,0,0,0.24)] sm:h-130 sm:p-8 lg:p-10"
       >
         <div className="flex items-start justify-between gap-6">
           <div>

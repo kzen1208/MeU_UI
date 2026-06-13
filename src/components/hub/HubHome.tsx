@@ -9,7 +9,6 @@ import { Navbar1 } from "@/components/ui/shadcnblocks-com-navbar1";
 import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 import { CinematicFooter } from "@/components/ui/motion-footer";
 import { Skiper19 } from "@/components/ui/svg-follow-scroll";
-import { InternTrainingCourses } from "@/components/ui/intern-training-courses";
 import { Testimonials } from "@/components/ui/testimonials-columns-1";
 import StackingCards from "@/components/ui/stacking-card";
 import { useAuth } from "@/lib/auth/auth-context";
@@ -17,41 +16,15 @@ import CompanyIntroScroll from "./CompanyIntroScroll";
 import HomeWelcomeBack from "./HomeWelcomeBack";
 import LogosSlider from "./LogosSlider";
 import TrainingStack from "./TrainingStack";
+import TrainingJourneyShowcase from "./TrainingJourneyShowcase";
+import TrainingCtaHero from "./TrainingCtaHero";
+import MentorsGallery from "./MentorsGallery";
 import StoryFlow from "./StoryFlow";
 import FAQSection from "./FAQSection";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { translations } from "@/lib/i18n/translations";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const TRAINING_COURSE_MEDIA = [
-  {
-    id: "onboarding",
-    imageSrc:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
-    isNew: true,
-  },
-  {
-    id: "ui-foundations",
-    imageSrc:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "project-practice",
-    imageSrc:
-      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "real-sprint",
-    imageSrc:
-      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "release",
-    imageSrc:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80",
-  },
-];
 
 const STACKING_PROJECT_MEDIA = [
   { link: "https://images.unsplash.com/photo-1605106702842-01a887a31122?q=80&w=1200&auto=format&fit=crop", color: "#7ea2ff" },
@@ -64,11 +37,6 @@ export default function HubHome() {
   const { language } = useLanguage();
   const t = translations[language];
   const { user } = useAuth();
-
-  const trainingCourses = t.trainingCourses.courses.map((course, index) => ({
-    ...course,
-    ...TRAINING_COURSE_MEDIA[index],
-  }));
 
   const stackingProjects = t.stackingCards.projects.map((project, index) => ({
     ...project,
@@ -113,24 +81,21 @@ export default function HubHome() {
       gsap.utils.toArray<HTMLElement>(".reveal-section").forEach((section) => {
         const items = section.querySelectorAll<HTMLElement>(".reveal-item");
 
-        gsap.set(items, { clearProps: "opacity,visibility,transform" });
+        gsap.set(items, { y: 26, opacity: 0 });
 
         ScrollTrigger.create({
           trigger: section,
           start: "top 82%",
           once: true,
           onEnter: () => {
-            gsap.fromTo(
-              items,
-              { y: 26 },
-              {
-                y: 0,
-                duration: 0.65,
-                stagger: 0.08,
-                ease: "power3.out",
-                clearProps: "transform",
-              }
-            );
+            gsap.to(items, {
+              y: 0,
+              opacity: 1,
+              duration: 0.65,
+              stagger: 0.08,
+              ease: "power3.out",
+              clearProps: "transform,opacity",
+            });
           },
         });
       });
@@ -278,11 +243,15 @@ export default function HubHome() {
 
         <StoryFlow />
 
-        <InternTrainingCourses courses={trainingCourses} />
+        <TrainingJourneyShowcase />
+
+        <TrainingCtaHero />
 
         <TrainingStack />
 
         <StackingCards projects={stackingProjects} />
+
+        <MentorsGallery />
 
         <Testimonials />
 

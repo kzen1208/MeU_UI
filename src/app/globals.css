@@ -105,6 +105,10 @@ body {
 }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 
+.font-firs {
+  font-family: 'TT Firs Neue', 'Inter', system-ui, sans-serif;
+}
+
 /* ─── Selection ──────────────────────────────────────────────── */
 
 ::selection {

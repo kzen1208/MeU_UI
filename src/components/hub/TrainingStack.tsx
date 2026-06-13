@@ -14,7 +14,7 @@ export default function TrainingStack() {
         <div className="grid md:grid-cols-2 md:gap-8 xl:gap-12">
           <div className="md:sticky md:top-0 md:flex md:h-screen md:flex-col md:justify-center md:py-16">
             <h5 className="text-xs uppercase tracking-wide text-[#4264ff]">{t.eyebrow}</h5>
-            <h2 className="mb-6 mt-4 text-4xl font-bold tracking-tight">
+            <h2 className="mb-6 mt-4 text-[clamp(2.6rem,7vw,6.6rem)] font-bold leading-[0.95] tracking-normal">
               {t.headingPrefix}{" "}
               <span className="text-[#4264ff]">{t.headingHighlight}</span>{" "}
               {t.headingSuffix}

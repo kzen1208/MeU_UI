@@ -118,40 +118,37 @@ export const translations = {
       headingLines: ["Trải nghiệm", "tương tác", "sống động"],
       subtitle: "Cuộn xuống để khám phá hệ thống animation của MeU UI Hub",
     },
-    trainingCourses: {
-      title: "Khoá đào tạo thực tập sinh",
-      subtitle: "Đồng hành cùng MeU trên hành trình thực chiến",
-      journeyLabel: "Hành trình Intern",
-      newBadge: "MỚI",
-      scrollLeftAria: "Cuộn sang trái",
-      scrollRightAria: "Cuộn sang phải",
-      courses: [
+    trainingShowcase: {
+      eyebrow: "Đồng hành cùng MeU trên hành trình thực chiến",
+      headingLine1: "Khoá đào tạo",
+      headingLine2: "thực tập sinh",
+      description1:
+        "MeU UI Hub đồng hành cùng thực tập sinh trong 12 tuần, từ onboarding design system đến thực chiến sprint cùng đội ngũ sản phẩm thật.",
+      description2:
+        "Mục tiêu là giúp mỗi intern làm chủ component, token và quy trình UI để tự tin ship sản phẩm ngay từ những dự án đầu tiên.",
+      linkLabel: "Khám phá Component Store",
+      stats: [
         {
-          id: "onboarding",
-          track: "Onboarding & Design System",
-          period: "TUẦN 1 - 2",
+          value: "12 tuần",
+          text: "Hành trình đào tạo trải dài từ onboarding, UI Foundations đến demo sản phẩm cuối khoá.",
         },
         {
-          id: "ui-foundations",
-          track: "UI Foundations & Token cơ bản",
-          period: "TUẦN 3 - 4",
+          value: "5 khoá học",
+          text: "Từ Design System, UI Foundations, thực hành dự án Figma đến thực chiến sprint cùng đội ngũ.",
         },
         {
-          id: "project-practice",
-          track: "Thực hành dự án mẫu từ Figma",
-          period: "TUẦN 5 - 7",
-        },
-        {
-          id: "real-sprint",
-          track: "Thực chiến sprint cùng đội ngũ",
-          period: "TUẦN 8 - 11",
-        },
-        {
-          id: "release",
-          track: "Demo, review & tổng kết",
-          period: "TUẦN 12",
+          value: "100% thực chiến",
+          text: "Mỗi intern được tham gia sprint thật, review trực tiếp cùng mentor và team sản phẩm MeU.",
         },
       ],
+    },
+    trainingCta: {
+      heading: "Sẵn sàng cho hành trình của bạn",
+      description:
+        "Ứng tuyển vào chương trình thực tập tại MeU để học design system, làm việc cùng đội ngũ sản phẩm thật và xây dựng portfolio UI của riêng bạn.",
+      statValue: "200+",
+      statLabel: "Học viên đã đồng hành cùng MeU",
+      ctaLabel: "Ứng tuyển ngay",
     },
     trainingStack: {
       eyebrow: "quy trình của chúng tôi",
@@ -225,6 +222,21 @@ export const translations = {
             "Khi component đủ ổn định, UI Hub có thể mở rộng thành package nội bộ để ship sản phẩm nhất quán hơn.",
           eyebrow: "Package Path",
         },
+      ],
+    },
+    mentorsGallery: {
+      eyebrow: "Mentor MeU",
+      headingPrefix: "Mentor đồng hành cùng",
+      headingHighlight: "bạn",
+      description:
+        "Mỗi intern được ghép cặp với mentor giàu kinh nghiệm, đồng hành xuyên suốt 12 tuần đào tạo và các sprint thực chiến.",
+      ctaLabel: "Ứng tuyển làm mentor",
+      mentors: [
+        { name: "Minh Trần" },
+        { name: "Hoài An" },
+        { name: "Quốc Bảo" },
+        { name: "Thảo Vy" },
+        { name: "Đức Anh" },
       ],
     },
     testimonials: {
@@ -644,40 +656,37 @@ export const translations = {
       headingLines: ["Interactive", "experiences", "come alive"],
       subtitle: "Scroll down to explore the MeU UI Hub animation system",
     },
-    trainingCourses: {
-      title: "Intern Training Program",
-      subtitle: "Walking the real-project journey together with MeU",
-      journeyLabel: "Intern Journey",
-      newBadge: "NEW",
-      scrollLeftAria: "Scroll left",
-      scrollRightAria: "Scroll right",
-      courses: [
+    trainingShowcase: {
+      eyebrow: "Walking the real-project journey together with MeU",
+      headingLine1: "Intern Training",
+      headingLine2: "Program",
+      description1:
+        "MeU UI Hub walks alongside interns for 12 weeks, from design-system onboarding to real sprints with the product team.",
+      description2:
+        "The goal is for every intern to master components, tokens, and UI workflows so they can ship confidently from their very first projects.",
+      linkLabel: "Explore the Component Store",
+      stats: [
         {
-          id: "onboarding",
-          track: "Onboarding & Design System",
-          period: "WEEK 1 - 2",
+          value: "12 weeks",
+          text: "A training journey spanning onboarding, UI Foundations, and a final product demo.",
         },
         {
-          id: "ui-foundations",
-          track: "UI Foundations & Core Tokens",
-          period: "WEEK 3 - 4",
+          value: "5 courses",
+          text: "From Design System and UI Foundations to Figma project practice and real sprints with the team.",
         },
         {
-          id: "project-practice",
-          track: "Practice with sample Figma projects",
-          period: "WEEK 5 - 7",
-        },
-        {
-          id: "real-sprint",
-          track: "Real sprints with the team",
-          period: "WEEK 8 - 11",
-        },
-        {
-          id: "release",
-          track: "Demo, review & wrap-up",
-          period: "WEEK 12",
+          value: "100% hands-on",
+          text: "Every intern joins real sprints with direct reviews from mentors and the MeU product team.",
         },
       ],
+    },
+    trainingCta: {
+      heading: "Ready for your journey",
+      description:
+        "Apply to MeU's internship program to learn our design system, work alongside a real product team, and build your own UI portfolio.",
+      statValue: "200+",
+      statLabel: "Alumni who walked this journey with MeU",
+      ctaLabel: "Apply now",
     },
     trainingStack: {
       eyebrow: "our process",
@@ -751,6 +760,21 @@ export const translations = {
             "Once components are stable enough, UI Hub can grow into an internal package for more consistent product delivery.",
           eyebrow: "Package Path",
         },
+      ],
+    },
+    mentorsGallery: {
+      eyebrow: "MeU Mentors",
+      headingPrefix: "Mentors who walk with",
+      headingHighlight: "you",
+      description:
+        "Every intern is paired with an experienced mentor for the full 12-week program and every real-project sprint.",
+      ctaLabel: "Become a mentor",
+      mentors: [
+        { name: "Minh Tran" },
+        { name: "Hoai An" },
+        { name: "Quoc Bao" },
+        { name: "Thao Vy" },
+        { name: "Duc Anh" },
       ],
     },
     testimonials: {
