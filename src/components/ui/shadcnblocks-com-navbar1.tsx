@@ -132,7 +132,7 @@ const buildMenu = (t: NavTranslations): MenuItem[] => [
         title: category.name,
         description: `${category.tag} - ${category.components.length} resources`,
         icon: <Icon className="size-5 shrink-0 text-[#85a0ff]" />,
-        url: `/category/${category.slug}`,
+        url: "/components",
       };
     }),
   },

@@ -79,11 +79,15 @@ export default function ProfilePage() {
           className="mt-10 flex flex-col gap-8 rounded-3xl border border-[#050936]/10 bg-white p-8 shadow-[0_18px_38px_rgba(5,9,54,0.06)]"
         >
           <div className="flex items-center gap-5">
-            <img
-              src={avatar}
-              alt={name}
-              className="h-20 w-20 rounded-full border border-[#050936]/10 bg-[#f7f8ff] object-cover"
-            />
+            {avatar ? (
+              <img
+                src={avatar}
+                alt={name}
+                className="h-20 w-20 rounded-full border border-[#050936]/10 bg-[#f7f8ff] object-cover"
+              />
+            ) : (
+              <div className="h-20 w-20 rounded-full border border-[#050936]/10 bg-[#f7f8ff]" />
+            )}
             <div>
               <p className="text-sm font-bold uppercase tracking-wide text-[#050936]/45">
                 {t.avatarLabel}
@@ -123,6 +127,21 @@ export default function ProfilePage() {
                 className="cursor-not-allowed rounded-xl border border-[#050936]/12 bg-[#f7f8ff] px-4 py-3 text-sm text-[#050936]/55"
               />
             </label>
+
+            <div className="flex flex-col gap-2">
+              <span className="text-sm font-bold uppercase tracking-wide text-[#050936]/45">
+                {t.roleLabel}
+              </span>
+              <span
+                className={`inline-flex h-11.5 w-fit items-center rounded-xl px-4 text-sm font-semibold ${
+                  user.role === "admin"
+                    ? "bg-[#4264ff]/10 text-[#4264ff]"
+                    : "bg-[#050936]/5 text-[#050936]/70"
+                }`}
+              >
+                {t.roles[user.role]}
+              </span>
+            </div>
           </div>
 
           <label className="flex flex-col gap-2">
@@ -177,6 +196,21 @@ export default function ProfilePage() {
             </button>
           </div>
         </form>
+
+        {user.role === "admin" ? (
+          <Link
+            href="/admin"
+            className="mt-6 flex items-center justify-between gap-4 rounded-3xl border border-[#4264ff]/25 bg-[#4264ff]/8 p-6 transition hover:bg-[#4264ff]/12"
+          >
+            <div>
+              <p className="text-lg font-bold text-[#050936]">{t.adminDashboardLink}</p>
+              <p className="mt-1 text-sm text-[#050936]/60">{t.adminDashboardDescription}</p>
+            </div>
+            <span className="inline-flex h-10 items-center rounded-full bg-[#4264ff] px-5 text-sm font-semibold text-white">
+              {t.adminDashboardLink}
+            </span>
+          </Link>
+        ) : null}
       </div>
     </div>
   );

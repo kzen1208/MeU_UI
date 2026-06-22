@@ -7,6 +7,7 @@ export interface ComponentItem {
   status: ComponentStatus;
   statusColor: string;
   preview: ReactNode;
+  link?: string;
 }
 
 export interface Category {
@@ -21,7 +22,12 @@ export interface Category {
 const STABLE_STATUS = "text-emerald-400 bg-emerald-400/10";
 const PLANNED_STATUS = "text-yellow-400 bg-yellow-400/10";
 
-type PreviewKind =
+export const STATUS_COLOR: Record<ComponentStatus, string> = {
+  Stable: STABLE_STATUS,
+  Planned: PLANNED_STATUS,
+};
+
+export type ComponentPreviewKind =
   | "actions"
   | "advanced"
   | "chart"
@@ -33,7 +39,20 @@ type PreviewKind =
   | "overlay"
   | "table";
 
-function catalogPreview(kind: PreviewKind, accent = "bg-blue-500/45") {
+export const COMPONENT_PREVIEW_KINDS: ComponentPreviewKind[] = [
+  "actions",
+  "advanced",
+  "chart",
+  "content",
+  "feedback",
+  "form",
+  "media",
+  "navigation",
+  "overlay",
+  "table",
+];
+
+export function catalogPreview(kind: ComponentPreviewKind, accent = "bg-blue-500/45") {
   const shellClass = "p-3 bg-[#0F0F1C] rounded-lg border border-white/5";
 
   if (kind === "actions") {
@@ -190,7 +209,7 @@ function catalogPreview(kind: PreviewKind, accent = "bg-blue-500/45") {
 
 function catalogComponent(
   name: string,
-  kind: PreviewKind,
+  kind: ComponentPreviewKind,
   status: ComponentStatus = "Planned",
   accent?: string
 ): ComponentItem {

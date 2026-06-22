@@ -1,5 +1,5 @@
-import HubCategoryPage from "@/components/hub/HubCategoryPage";
+import ComponentsDirectoryPage from "@/components/hub/ComponentsDirectoryPage";
 
 export default function ComponentsPage() {
-  return <HubCategoryPage slug="layout" />;
+  return <ComponentsDirectoryPage />;
 }

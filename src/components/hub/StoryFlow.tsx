@@ -21,16 +21,23 @@ export default function StoryFlow() {
       {t.sections.map((section, index) => {
         const theme = SECTION_THEMES[index % SECTION_THEMES.length];
 
+        const hasGroups = section.groups.length > 0;
+        const dividerSpacing = hasGroups ? "my-[1.2vw]" : "my-[2vw]";
+
         return (
           <FlowSection
-            key={section.label}
+            key={index}
             aria-label={section.label}
             style={{ backgroundColor: theme.backgroundColor, color: theme.color }}
           >
             <p className="text-xs font-bold uppercase tracking-[0.2em]">{section.label}</p>
-            <hr className={`my-[2vw] border-none border-t ${theme.divider}`} />
+            <hr className={`${dividerSpacing} border-none border-t ${theme.divider}`} />
             <div>
-              <h2 className="text-[clamp(2.25rem,8vw,8rem)] font-bold uppercase leading-[1.05] tracking-tight">
+              <h2
+                className={`font-bold uppercase leading-[1.05] tracking-tight ${
+                  hasGroups ? "text-[clamp(2rem,5.5vw,4.5rem)]" : "text-[clamp(2.25rem,8vw,8rem)]"
+                }`}
+              >
                 {section.heading.map((line, lineIndex) => (
                   <span key={lineIndex} className="block">
                     {line}
@@ -38,10 +45,12 @@ export default function StoryFlow() {
                 ))}
               </h2>
             </div>
-            <hr className={`my-[2vw] border-none border-t ${theme.divider}`} />
+            <hr className={`${dividerSpacing} border-none border-t ${theme.divider}`} />
             <p
-              className={`max-w-[50ch] text-[clamp(1rem,2.5vw,2rem)] font-normal leading-relaxed ${
-                section.groups.length === 0 ? "sm:mt-auto" : ""
+              className={`max-w-[50ch] leading-relaxed ${
+                hasGroups
+                  ? "text-[clamp(0.95rem,1.8vw,1.35rem)] font-normal"
+                  : "text-[clamp(1rem,2.5vw,2rem)] font-normal sm:mt-auto"
               }`}
             >
               {section.description}
@@ -49,14 +58,14 @@ export default function StoryFlow() {
 
             {section.groups.map((group, groupIndex) => (
               <div key={groupIndex}>
-                <hr className={`my-[2vw] border-none border-t ${theme.divider}`} />
-                <div className="flex flex-wrap gap-[3vw]">
+                <hr className={`${dividerSpacing} border-none border-t ${theme.divider}`} />
+                <div className="grid grid-cols-1 gap-[2vw] sm:grid-cols-3">
                   {group.map((item) => (
-                    <div key={item.title} className="min-w-[180px] flex-1">
-                      <p className="mb-2 text-sm font-bold uppercase tracking-wider">
+                    <div key={item.title}>
+                      <p className="mb-1.5 text-xs font-bold uppercase tracking-wider sm:text-sm">
                         {item.title}
                       </p>
-                      <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
+                      <p className="text-[clamp(0.8rem,1.1vw,0.95rem)] leading-relaxed opacity-75">
                         {item.text}
                       </p>
                     </div>
@@ -64,8 +73,8 @@ export default function StoryFlow() {
                 </div>
                 {groupIndex === 0 && section.secondDescription && (
                   <>
-                    <hr className={`my-[2vw] border-none border-t ${theme.divider}`} />
-                    <p className="max-w-[50ch] text-[clamp(1rem,2.5vw,2rem)] font-normal leading-relaxed">
+                    <hr className={`${dividerSpacing} border-none border-t ${theme.divider}`} />
+                    <p className="max-w-[50ch] text-[clamp(0.95rem,1.8vw,1.35rem)] font-normal leading-relaxed">
                       {section.secondDescription}
                     </p>
                   </>

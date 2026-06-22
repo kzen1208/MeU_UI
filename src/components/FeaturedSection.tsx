@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 function ComponentCard({ comp, cat }: { comp: ComponentItem; cat: Category }) {
   return (
     <Link
-      href={`/category/${cat.slug}`}
+      href="/components"
       className="group relative flex flex-col rounded-xl overflow-hidden bg-[#111118] border border-white/8 hover:border-violet-500/40 transition-all duration-200"
     >
       {/* Preview area */}
@@ -111,7 +111,7 @@ export default function FeaturedSection() {
             </p>
           </div>
           <Link
-            href="/category/layout"
+            href="/components"
             className="shrink-0 flex items-center gap-1.5 text-[13px] text-slate-400 hover:text-violet-300 font-medium transition-colors group"
           >
             Explore all
@@ -134,7 +134,7 @@ export default function FeaturedSection() {
                 </span>
               </div>
               <Link
-                href={`/category/${cat.slug}`}
+                href="/components"
                 className="group flex items-center gap-1 text-[12px] text-slate-500 hover:text-violet-300 transition-colors font-medium"
               >
                 View all

@@ -56,9 +56,9 @@ const SignIn1 = () => {
           <div className="flex w-full flex-col gap-3">
             <input
               placeholder={t.emailPlaceholder}
-              type="email"
+              type="text"
               value={email}
-              autoComplete="email"
+              autoComplete="username"
               className="w-full rounded-xl bg-white/10 px-5 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#85a0ff]/70"
               onChange={(event) => setEmail(event.target.value)}
             />

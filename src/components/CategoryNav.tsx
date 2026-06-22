@@ -99,7 +99,7 @@ export default function CategoryNav({ activeSlug = null }: Props) {
           {CATEGORIES.map((cat) => (
             <Link
               key={cat.slug}
-              href={`/category/${cat.slug}`}
+              href="/components"
               className={`cat-tab shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200 ${
                 activeSlug === cat.slug
                   ? "bg-violet-600/20 text-violet-300 border border-violet-500/30"

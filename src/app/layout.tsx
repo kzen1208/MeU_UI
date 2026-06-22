@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { LanguageProvider } from "@/lib/i18n/language-context";
 import { AuthProvider } from "@/lib/auth/auth-context";
+import { AdminCatalogProvider } from "@/lib/admin/catalog-store";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -72,7 +73,9 @@ export default function RootLayout({
           }}
         />
         <LanguageProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <AdminCatalogProvider>{children}</AdminCatalogProvider>
+          </AuthProvider>
         </LanguageProvider>
       </body>
     </html>

@@ -7,6 +7,7 @@ import {
   Code2,
   FolderOpen,
   LayoutDashboard,
+  LayoutTemplate,
   Library,
   Palette,
   Rocket,
@@ -53,6 +54,7 @@ export default function HubSidebar({
   const primaryLinks = [
     { label: sidebar.primaryLinks.home, href: "/", icon: LayoutDashboard },
     { label: sidebar.primaryLinks.components, href: "/components", icon: Boxes },
+    { label: sidebar.primaryLinks.templates, href: "/templates", icon: LayoutTemplate },
     { label: sidebar.primaryLinks.animations, href: "/#animation-system", icon: Sparkles },
     { label: sidebar.primaryLinks.training, href: "/#training", icon: BookOpen },
   ];
@@ -125,7 +127,7 @@ export default function HubSidebar({
               return (
                 <Link
                   key={category.slug}
-                  href={`/category/${category.slug}`}
+                  href="/components"
                   className={cn(
                     "group flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-white/62 transition hover:bg-white/[0.06] hover:text-white",
                     isActive && "bg-[#4264ff]/16 text-white ring-1 ring-[#4264ff]/35"

@@ -20,6 +20,7 @@ import TrainingJourneyShowcase from "./TrainingJourneyShowcase";
 import TrainingCtaHero from "./TrainingCtaHero";
 import MentorsGallery from "./MentorsGallery";
 import StoryFlow from "./StoryFlow";
+import ChatboxSection from "./ChatboxSection";
 import FAQSection from "./FAQSection";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { translations } from "@/lib/i18n/translations";
@@ -254,6 +255,8 @@ export default function HubHome() {
         <MentorsGallery />
 
         <Testimonials />
+
+        <ChatboxSection />
 
         <FAQSection />
 
