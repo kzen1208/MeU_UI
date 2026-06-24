@@ -154,9 +154,9 @@ export const translations = {
     chatbox: {
       eyebrow: "Trợ lý MeU",
       heading: "Có câu hỏi về UI Hub?",
-      description: "Thử hỏi trợ lý của chúng tôi — đây là bản demo giao diện chat, chưa kết nối AI thật.",
+      description: "Thử hỏi trợ lý của chúng tôi về component, template hoặc cách dùng UI Hub.",
       placeholder: "Nhập câu hỏi của bạn...",
-      demoReply: "Cảm ơn bạn đã gửi! Đây là bản demo giao diện chat — MeU UI Hub chưa kết nối AI thật.",
+      errorReply: "Xin lỗi, trợ lý đang gặp lỗi kết nối. Bạn thử gửi lại sau nhé.",
     },
     trainingStack: {
       eyebrow: "quy trình của chúng tôi",
@@ -889,9 +889,9 @@ export const translations = {
     chatbox: {
       eyebrow: "MeU Assistant",
       heading: "Have a question about UI Hub?",
-      description: "Try asking our assistant — this is a chat UI demo and isn't wired to a real AI yet.",
+      description: "Ask our assistant about components, templates, or how to use UI Hub.",
       placeholder: "Type your question...",
-      demoReply: "Thanks for the message! This is a chat UI demo — MeU UI Hub isn't connected to a real AI yet.",
+      errorReply: "Sorry, the assistant hit a connection error. Please try again in a moment.",
     },
     trainingStack: {
       eyebrow: "our process",

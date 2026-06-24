@@ -212,7 +212,7 @@ const renderMenuItem = (item: MenuItem, t: NavTranslations) => {
               <NavigationMenuLink asChild>
                 <SmartLink
                   href={item.url}
-                  className="flex rounded-lg border border-white/10 bg-white/[0.045] p-3 transition hover:bg-white/[0.08]"
+                  className="flex rounded-lg border border-white/10 bg-white/[0.045] p-3 transition hover:bg-black/30"
                 >
                   <div>
                     <div className="text-sm font-semibold text-white">{item.title}</div>
@@ -228,7 +228,7 @@ const renderMenuItem = (item: MenuItem, t: NavTranslations) => {
                 <NavigationMenuLink asChild>
                   <SmartLink
                     href={subItem.url}
-                    className="flex min-h-[84px] select-none gap-3 rounded-lg p-3 leading-none outline-none transition hover:bg-white/[0.07]"
+                    className="flex min-h-[84px] select-none gap-3 rounded-lg p-3 leading-none outline-none transition hover:bg-black/30"
                   >
                     {subItem.icon}
                     <div className="min-w-0">
@@ -254,7 +254,7 @@ const renderMenuItem = (item: MenuItem, t: NavTranslations) => {
       <NavigationMenuLink asChild>
         <SmartLink
           href={item.url}
-          className="inline-flex h-10 w-max items-center justify-center rounded-lg px-3.5 py-2 text-sm font-semibold text-white/68 transition hover:bg-white/[0.07] hover:text-white"
+          className="inline-flex h-10 w-max items-center justify-center rounded-lg px-3.5 py-2 text-sm font-semibold text-white/68 transition hover:bg-black/30 hover:text-white"
         >
           {item.title}
         </SmartLink>
